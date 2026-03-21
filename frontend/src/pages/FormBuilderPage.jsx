@@ -127,9 +127,12 @@ export default function FormBuilderPage() {
         await formsApi.update(id, payload);
         toast.success('Form updated!');
       } else {
-        const created = await formsApi.create(payload);
+        await formsApi.create(payload);
         toast.success('Form created!');
-        navigate(`/admin/forms/${created.id}/edit`);
+        setTitle('');
+        setDescription('');
+        setFields([blankField()]);
+        navigate('/admin/forms');
       }
     } catch (err) {
       toast.error(err.message);
