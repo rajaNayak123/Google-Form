@@ -5,6 +5,7 @@ import { formsApi, responsesApi } from '../services/api';
 import PageHeader from '../components/shared/PageHeader';
 import { Button, Spinner, EmptyState, Badge } from '../components/shared/UI';
 import { formatDate, getTypeLabel } from '../utils/helpers';
+import { BarChart2, HelpCircle, Inbox, Link, Edit } from 'lucide-react';
 
 export default function FormResponsesPage() {
   const { id } = useParams();
@@ -40,17 +41,17 @@ export default function FormResponsesPage() {
         title={`Responses: ${form?.title}`}
         description={`${responses.length} total response${responses.length !== 1 ? 's' : ''}`}
         actions={<>
-          <Button variant="secondary" onClick={() => navigate(`/admin/forms/${id}/edit`)}>✏️ Edit Form</Button>
+          <Button variant="secondary" onClick={() => navigate(`/admin/forms/${id}/edit`)}><Edit className="w-4 h-4" /> Edit Form</Button>
           <Button variant="secondary" onClick={() => navigate('/admin/forms')}>← Back</Button>
         </>}
       />
       <div className="p-8 flex flex-col gap-6">
         {/* Stats */}
         <div className="flex gap-4 flex-wrap">
-          {[['📊', responses.length, 'Total Responses'], ['❓', fields.length, 'Questions']].map(([icon, val, label]) => (
+          {[[<BarChart2 className="w-4 h-4" />, responses.length, 'Total Responses'], [<HelpCircle className="w-4 h-4" />, fields.length, 'Questions']].map(([icon, val, label]) => (
             <div key={label} className="bg-white border border-slate-200 rounded-xl px-6 py-4 flex flex-col gap-0.5 min-w-[140px] shadow-card">
               <span className="text-2xl font-black text-indigo-600 font-mono">{val}</span>
-              <span className="text-xs text-slate-400">{icon} {label}</span>
+              <span className="text-xs text-slate-400 flex items-center gap-1.5">{icon} {label}</span>
             </div>
           ))}
         </div>
@@ -69,8 +70,8 @@ export default function FormResponsesPage() {
         )}
         {/* Table */}
         {responses.length === 0 ? (
-          <EmptyState icon="📭" title="No responses yet" description="Share your form link to start collecting responses."
-            action={<Button variant="primary" onClick={() => window.open(`/f/${form?.uniqueSlug}`, '_blank')}>🔗 Open Form</Button>} />
+          <EmptyState icon={<Inbox className="w-12 h-12 text-slate-400 mb-2" />} title="No responses yet" description="Share your form link to start collecting responses."
+            action={<Button variant="primary" onClick={() => window.open(`/f/${form?.uniqueSlug}`, '_blank')}><Link className="w-4 h-4" /> Open Form</Button>} />
         ) : (
           <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-card">
             <table className="w-full text-sm border-collapse">

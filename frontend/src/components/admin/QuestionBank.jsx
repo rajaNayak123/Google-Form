@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Spinner, EmptyState } from '../shared/UI';
 import { getTypeLabel } from '../../utils/helpers';
+import { HelpCircle } from 'lucide-react';
 
 export default function QuestionBank({ questions, loading, onAddSelected, onClose }) {
   const [selected, setSelected] = useState(new Set());
@@ -30,7 +31,7 @@ export default function QuestionBank({ questions, loading, onAddSelected, onClos
           <div className="flex justify-center py-10"><Spinner /></div>
         )}
         {!loading && questions.length === 0 && (
-          <EmptyState icon="❓" title="No saved questions" description="Add questions to reuse them." />
+          <EmptyState icon={<HelpCircle className="w-12 h-12 text-slate-400 mb-2" />} title="No saved questions" description="Add questions to reuse them." />
         )}
         {!loading && questions.map((q) => (
           <label

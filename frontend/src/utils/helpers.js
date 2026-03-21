@@ -1,11 +1,14 @@
+import React from 'react';
+import { Type, AlignLeft, Hash, ToggleLeft, CircleDot, CheckSquare, Calendar } from 'lucide-react';
+
 export const QUESTION_TYPES = [
-  { value: "SHORT_ANSWER", label: "Short Answer", icon: "✏️" },
-  { value: "LONG_ANSWER", label: "Long Answer", icon: "📝" },
-  { value: "NUMBER", label: "Number", icon: "🔢" },
-  { value: "YES_NO", label: "Yes / No", icon: "🔘" },
-  { value: "SINGLE_CHOICE", label: "Single Choice", icon: "◉" },
-  { value: "MULTIPLE_CHOICE", label: "Multiple Choice", icon: "☑️" },
-  { value: "DATE", label: "Date", icon: "📅" },
+  { value: "SHORT_ANSWER", label: "Short Answer", icon: <Type className="w-4 h-4" /> },
+  { value: "LONG_ANSWER", label: "Long Answer", icon: <AlignLeft className="w-4 h-4" /> },
+  { value: "NUMBER", label: "Number", icon: <Hash className="w-4 h-4" /> },
+  { value: "YES_NO", label: "Yes / No", icon: <ToggleLeft className="w-4 h-4" /> },
+  { value: "SINGLE_CHOICE", label: "Single Choice", icon: <CircleDot className="w-4 h-4" /> },
+  { value: "MULTIPLE_CHOICE", label: "Multiple Choice", icon: <CheckSquare className="w-4 h-4" /> },
+  { value: "DATE", label: "Date", icon: <Calendar className="w-4 h-4" /> },
 ];
 
 export const getTypeLabel = (type) =>

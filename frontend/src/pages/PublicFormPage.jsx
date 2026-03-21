@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { formsApi, responsesApi } from '../services/api';
 import { Button, Spinner } from '../components/shared/UI';
+import { Search, AlertTriangle } from 'lucide-react';
 
 export default function PublicFormPage() {
   const { slug } = useParams();
@@ -58,7 +59,7 @@ export default function PublicFormPage() {
   if (notFound) return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
       <div className="bg-white border border-slate-200 rounded-2xl p-12 text-center max-w-sm shadow-lg flex flex-col items-center gap-3">
-        <span className="text-5xl">🔍</span>
+        <span className="text-5xl text-slate-400 flex justify-center"><Search size={48} /></span>
         <h2 className="text-xl font-bold text-slate-800">Form not found</h2>
         <p className="text-slate-500 text-sm">This form may have been deleted or the link is incorrect.</p>
       </div>
@@ -88,7 +89,7 @@ export default function PublicFormPage() {
                 {field.required && <span className="text-red-500 ml-1">*</span>}
               </p>
               <FieldInput field={field} value={answers[field.questionId]} onChange={handleChange} onMultiChange={handleMulti} error={errors[field.questionId]} />
-              {errors[field.questionId] && <p className="text-xs text-red-500 font-medium">⚠ {errors[field.questionId]}</p>}
+              {errors[field.questionId] && <p className="text-xs text-red-500 font-medium flex items-center gap-1"><AlertTriangle size={12} /> {errors[field.questionId]}</p>}
             </div>
           ))}
 

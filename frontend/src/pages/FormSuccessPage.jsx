@@ -1,13 +1,15 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
+import { CheckCircle } from 'lucide-react';
+
 export default function FormSuccessPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4">
       <div className="bg-white border border-slate-200 rounded-2xl shadow-xl p-12 max-w-md w-full text-center flex flex-col items-center gap-4 animate-pop-in">
-        <div className="text-6xl animate-bounce-in">✅</div>
+        <div className="text-6xl animate-bounce-in text-green-500"><CheckCircle size={64} /></div>
         <h1 className="text-2xl font-bold text-slate-800">Response Submitted!</h1>
         <p className="text-slate-500 text-sm leading-relaxed">Thank you for filling out the form. Your response has been recorded.</p>
         <div className="flex flex-col gap-3 w-full mt-2">

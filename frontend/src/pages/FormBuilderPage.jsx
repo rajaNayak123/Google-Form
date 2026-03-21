@@ -7,6 +7,7 @@ import FieldEditor from '../components/admin/FieldEditor';
 import QuestionBank from '../components/admin/QuestionBank';
 import { Button, Input, Textarea, Spinner } from '../components/shared/UI';
 import { generateId } from '../utils/helpers';
+import { Pointer } from 'lucide-react';
 
 const blankField = () => ({
   _localId: generateId(),
@@ -203,7 +204,7 @@ export default function FormBuilderPage() {
             onClick={openBank}
             className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-300 rounded-md text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
           >
-            <span className="text-base leading-none">👆</span>
+            <span className="text-base leading-none flex items-center"><Pointer className="w-4 h-4" /></span>
             Choose from existing
           </button>
         </div>

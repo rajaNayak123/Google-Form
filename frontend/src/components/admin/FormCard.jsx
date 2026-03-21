@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Badge, Button } from '../shared/UI';
 import { formatDate, copyToClipboard } from '../../utils/helpers';
+import { BarChart2, Clock, Copy, Edit, Eye, Link, Trash2 } from 'lucide-react';
 
 export default function FormCard({ form, onDelete }) {
   const navigate = useNavigate();
@@ -30,11 +31,11 @@ export default function FormCard({ form, onDelete }) {
       {/* Meta */}
       <div className="flex items-center gap-5 text-xs text-slate-400">
         <span className="flex items-center gap-1.5">
-          <span>📊</span>
+          <span><BarChart2 className="w-4 h-4" /></span>
           {form.responseCount} response{form.responseCount !== 1 ? 's' : ''}
         </span>
         <span className="flex items-center gap-1.5">
-          <span>🕐</span>
+          <span><Clock className="w-4 h-4" /></span>
           {formatDate(form.createdAt)}
         </span>
       </div>
@@ -47,23 +48,23 @@ export default function FormCard({ form, onDelete }) {
           className="flex-shrink-0 text-slate-400 hover:text-indigo-600 transition-colors text-sm px-1"
           title="Copy link"
         >
-          📋
+          <Copy className="w-4 h-4" />
         </button>
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-2 pt-1 border-t border-slate-100 flex-wrap">
+      <div className="flex items-center gap-2 pt-1 border-t border-slate-100 flex-wrap mt-auto">
         <Button variant="secondary" size="sm" onClick={() => navigate(`/admin/forms/${form.id}/edit`)}>
-          ✏️ Edit
+          <Edit className="w-3.5 h-3.5" /> Edit
         </Button>
         <Button variant="secondary" size="sm" onClick={() => navigate(`/admin/forms/${form.id}/responses`)}>
-          👁 Responses
+          <Eye className="w-3.5 h-3.5" /> Responses
         </Button>
         <Button variant="ghost" size="sm" onClick={() => window.open(`/f/${form.uniqueSlug}`, '_blank')}>
-          🔗 Preview
+          <Link className="w-3.5 h-3.5" /> Preview
         </Button>
         <Button variant="danger" size="sm" onClick={() => onDelete(form.id)}>
-          🗑
+          <Trash2 className="w-4 h-4" />
         </Button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
+import { ClipboardList } from 'lucide-react';
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export default function AdminLayout() {
               }`
             }
           >
-            <span className="text-base">📋</span>
+            <span className="text-base"><ClipboardList className="w-5 h-5" /></span>
             My Forms
           </NavLink>
         </nav>

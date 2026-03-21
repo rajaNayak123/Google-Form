@@ -5,6 +5,7 @@ import { formsApi } from '../services/api';
 import PageHeader from '../components/shared/PageHeader';
 import FormCard from '../components/admin/FormCard';
 import { Button, Spinner, EmptyState } from '../components/shared/UI';
+import { ClipboardList } from 'lucide-react';
 
 export default function FormsListPage() {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ export default function FormsListPage() {
 
         {!loading && forms.length === 0 && (
           <EmptyState
-            icon="📋"
+            icon={<ClipboardList className="w-12 h-12 text-slate-400 mb-2" />}
             title="No forms yet"
             description="Create your first form and start collecting responses."
             action={
