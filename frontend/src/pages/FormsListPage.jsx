@@ -14,7 +14,8 @@ export default function FormsListPage() {
   const loadForms = useCallback(async () => {
     try {
       setLoading(true);
-      setForms(await formsApi.getAll());
+      const res = await formsApi.getAll();
+      setForms(Array.isArray(res) ? res : (res?.data ?? []));
     } catch (err) {
       toast.error(err.message);
     } finally {
